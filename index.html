@@ -5,35 +5,81 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nishant Hinge — Resume</title>
   <style>
-    :root{--bg:#0b1220;--card:#071428;--muted:#93a4b4;--accent:#06b6d4;--glass:rgba(255,255,255,0.04);--paper:#fbfbfd}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter, sans-serif;background:linear-gradient(180deg,#041022 0%, #071428 100%);color:#e6eef6;}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1100px;margin:28px auto;padding:28px;display:grid;grid-template-columns:340px 1fr;gap:24px}
-    .card{background:rgba(255,255,255,0.02);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 24px rgba(0,0,0,0.4)}
-    .avatar{height:160px;width:160px;border-radius:50%;background:linear-gradient(135deg,#06b6d4,#2563eb);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;margin-bottom:16px}
-    h1{margin:0;font-size:22px}
-    h2{margin:16px 0 8px;font-size:18px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:4px}
-    h3{margin:6px 0;font-size:16px}
-    .subtitle{color:var(--muted);font-size:14px;margin-top:4px}
+    /* ===== Theme ===== */
+    :root{
+      --bg:#0e1117;
+      --card:#161b22;
+      --muted:#9ca3af;
+      --accent:#06b6d4;
+      --accent2:#9333ea;
+      --light:#f9fafb;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(160deg,var(--bg),#1e293b);
+      color:var(--light);
+      line-height:1.6;
+    }
+    a{color:var(--accent);text-decoration:none}
+    .wrap{
+      max-width:1100px;
+      margin:40px auto;
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:24px;
+      padding:20px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:16px;
+      padding:24px;
+      box-shadow:0 8px 28px rgba(0,0,0,0.45);
+    }
+    /* ===== Left ===== */
+    .avatar{
+      height:160px;width:160px;border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      display:flex;align-items:center;justify-content:center;
+      font-size:28px;font-weight:700;margin:0 auto 16px;color:#fff;
+      box-shadow:0 0 20px rgba(6,182,212,0.5);
+    }
+    h1{text-align:center;font-size:24px;margin-bottom:6px}
+    .subtitle{text-align:center;color:var(--muted);font-size:14px;margin-bottom:16px}
+    .contact div{margin:6px 0;font-size:14px;}
+    h2{margin:20px 0 10px;font-size:18px;color:var(--accent)}
     .small{font-size:13px;color:var(--muted)}
-    .contact div{margin:4px 0}
-    ul{margin:6px 0 12px 20px;padding:0}
+    /* ===== Skills / bars ===== */
+    .skills{display:flex;flex-direction:column;gap:10px}
+    .skill{display:flex;flex-direction:column}
+    .skill span{font-size:13px;display:flex;justify-content:space-between}
+    .bar{height:8px;border-radius:10px;background:#2d3748;overflow:hidden}
+    .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+
+    /* ===== Right ===== */
+    h3{font-size:16px;margin-bottom:4px}
+    .section{margin-bottom:22px}
+    .role{
+      border-left:4px solid var(--accent);
+      padding-left:12px;
+      margin-bottom:14px;
+      background:rgba(255,255,255,0.02);
+      border-radius:8px;
+      padding:12px;
+    }
+    .meta{font-size:13px;color:var(--muted);margin-bottom:6px}
+    ul{margin-left:18px;margin-top:6px}
     ul li{margin-bottom:6px;font-size:14px}
-    .timeline{display:flex;flex-direction:column;gap:16px}
-    .role{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px}
-    .role h3{font-size:15px}
-    .meta{font-size:13px;color:var(--muted);margin:4px 0}
-    .projects,.achievements,.extras{margin-top:10px}
-    .project,.achievement{margin-bottom:8px;font-size:14px}
-    footer{text-align:center;color:var(--muted);margin-top:20px;font-size:13px}
-    @media(max-width:920px){.wrap{grid-template-columns:1fr}}
-    @media print{body{background:#fff;color:#000}.card{background:#fff;color:#000;box-shadow:none;border:none}}
+
+    .achievements li,.extras li{margin-bottom:6px;font-size:14px}
+
+    footer{text-align:center;margin-top:20px;font-size:13px;color:var(--muted)}
+    @media(max-width:900px){.wrap{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <main class="wrap">
-    <!-- Left Column -->
+    <!-- LEFT -->
     <aside class="card">
       <div class="avatar">NH</div>
       <h1>Nishant Hinge</h1>
@@ -48,15 +94,18 @@
 
       <h2>Education</h2>
       <div class="small">
-        <strong>MBA</strong>, BITS School of Management (BITSoM), Mumbai — 2026 (Dean’s List, GPA 3.7/4.0)<br>
-        <strong>B.E. (Hons.) Chemical Eng., Minor Finance</strong>, BITS Pilani Goa — 2022 (9.01/10, Rank 7/78)<br>
-        <strong>ISC (XII)</strong>, Singhania School — 2018 (89.6%)<br>
-        <strong>CBSE (X)</strong>, Lokpuram Public School — 2016 (97.0%, Rank 2/250)
+        <p><strong>MBA</strong>, BITSoM — 2026 (Dean’s List, GPA 3.7/4.0)</p>
+        <p><strong>B.E. (Hons.) Chemical Eng., Minor Finance</strong>, BITS Pilani Goa — 2022 (9.01/10, Rank 7/78)</p>
+        <p>ISC (XII), Singhania School — 2018 (89.6%)</p>
+        <p>CBSE (X), Lokpuram Public School — 2016 (97.0%, Rank 2/250)</p>
       </div>
 
-      <h2>Skills</h2>
-      <div class="small">
-        Process Optimization, Lean Six Sigma, Financial Modeling, Sustainability Strategy, Excel, SQL, Tableau, Minitab, Python (pandas)
+      <h2>Core Skills</h2>
+      <div class="skills">
+        <div class="skill"><span>Process Optimization <em>90%</em></span><div class="bar"><i style="width:90%"></i></div></div>
+        <div class="skill"><span>Six Sigma & Lean <em>85%</em></span><div class="bar"><i style="width:85%"></i></div></div>
+        <div class="skill"><span>Financial Modeling <em>75%</em></span><div class="bar"><i style="width:75%"></i></div></div>
+        <div class="skill"><span>Sustainability Strategy <em>80%</em></span><div class="bar"><i style="width:80%"></i></div></div>
       </div>
 
       <h2>Certifications</h2>
@@ -65,26 +114,28 @@
       <h2>Positions</h2>
       <div class="small">
         Core Member — Penny-Wise Finance Club (2024)<br>
-        Core Member — Raise a Toast Club (Public Speaking, 2024)<br>
+        Core Member — Raise a Toast (Public Speaking, 2024)<br>
         Teaching Assistant — BITS Goa (2021)
       </div>
 
       <h2>Extracurriculars</h2>
       <div class="small">
-        • Silver Medal — High Jump (State, National-level rep)<br>
+        • Silver Medal — High Jump (State & Nationals rep)<br>
         • Silver Medal — 4x400m Relay (State)<br>
         • Volunteering — Powai Lake cleanup (200+ kg plastic waste removed)<br>
         • Mentored 5 underprivileged students, avg. score ↑11%
       </div>
     </aside>
 
-    <!-- Right Column -->
+    <!-- RIGHT -->
     <section class="card">
-      <h2>Professional Summary</h2>
-      <p class="small">Operations Engineer turned MBA Candidate with 21 months of work experience at Deccan Fine Chemicals and 8 months of internships in consulting, banking and FMCG. Skilled in process optimization, project management, sustainability, and financial analysis. Recognized through multiple awards, publications, and case competition wins. Seeking consulting/operations roles to drive business impact through analytical problem-solving.</p>
+      <div class="section">
+        <h2>Professional Summary</h2>
+        <p class="small">Operations Engineer turned MBA Candidate with 21 months of work experience at Deccan Fine Chemicals and internships in Flipkart, JP Morgan, and BPCL. Recognized through multiple awards, publications, and case competition wins. Seeking consulting/operations roles to drive business impact through analytical problem-solving.</p>
+      </div>
 
-      <h2>Work Experience</h2>
-      <div class="timeline">
+      <div class="section">
+        <h2>Work Experience</h2>
         <div class="role">
           <h3>Plant Operations Engineer — Deccan Fine Chemicals</h3>
           <div class="meta">Goa, India | Jul 2022 – Mar 2024</div>
@@ -92,15 +143,13 @@
             <li>Awarded twice as “Employee of the Month” out of 1000+ employees.</li>
             <li>Restored plant capacity to 100% within six months post-failure via RCA & 5-Why framework.</li>
             <li>Delivered ₹50L p.a savings (24%) through circular economy project as lead engineer.</li>
-            <li>Reduced expenditure from ₹2.35Cr to ₹1.65Cr by retrofitting second-hand equipment.</li>
             <li>Implemented 26 modifications → +8.5% yield, -5% energy use, +400MT throughput.</li>
             <li>Drafted SOPs & trained 10+ operators → 100% ISO-9001 audit compliance.</li>
             <li>Created sustainability training module, trained 1000+ employees, attended 4 ESG conferences.</li>
           </ul>
         </div>
-
         <div class="role">
-          <h3>Category Management Intern — Flipkart Pvt. Ltd.</h3>
+          <h3>Category Management Intern — Flipkart</h3>
           <div class="meta">Bangalore | Apr 2025 – Jun 2025</div>
           <ul>
             <li>Secured PPO for analytical insights & recommendations.</li>
@@ -108,9 +157,8 @@
             <li>Recommended 30+ strategies to boost GMV, CTR and traffic via assortment & pricing optimization.</li>
           </ul>
         </div>
-
         <div class="role">
-          <h3>Investment Banking Analyst Intern — JP Morgan Chase</h3>
+          <h3>Investment Banking Analyst Intern — JP Morgan</h3>
           <div class="meta">Mumbai | Jan 2022 – Jun 2022</div>
           <ul>
             <li>Received PPO for consistent performance.</li>
@@ -118,9 +166,8 @@
             <li>Built DCFs, WACC, football field analyses for M&A pitches across industries.</li>
           </ul>
         </div>
-
         <div class="role">
-          <h3>Research Intern — Bharat Petroleum Corporation Limited</h3>
+          <h3>Research Intern — BPCL</h3>
           <div class="meta">Mumbai | May 2020 – Jun 2020</div>
           <ul>
             <li>Validated equipment design with MATLAB model; identified 20% heat transfer efficiency drop.</li>
@@ -128,20 +175,24 @@
         </div>
       </div>
 
-      <h2>Achievements</h2>
-      <div class="achievements small">
-        • Top 10 globally — Global Harvard Case Competition (2025)<br>
-        • Top 50 nationally — EY Techathon, AI for rural women (2025)<br>
-        • PPI — Flipkart WIRED case competition (2024)<br>
-        • Research paper published at ISHMT, IIT Patna (2023)<br>
-        • Scholarship for productivity improvement — BPCL (2020)<br>
-        • All-rounder Student Award (Lioness Club, 2016)
+      <div class="section">
+        <h2>Achievements</h2>
+        <ul class="achievements">
+          <li>Top 10 globally — Global Harvard Case Competition (2025)</li>
+          <li>Top 50 nationally — EY Techathon, AI for rural women (2025)</li>
+          <li>PPI — Flipkart WIRED case competition (2024)</li>
+          <li>Research paper published at ISHMT, IIT Patna (2023)</li>
+          <li>Scholarship for productivity improvement — BPCL (2020)</li>
+          <li>All-rounder Student Award — Lioness Club (2016)</li>
+        </ul>
       </div>
 
-      <h2>Research</h2>
-      <p class="small">Primary Author — CFD simulation of convective heat transfer in micro-channels. Demonstrated 11% higher efficiency with channel wall. 400+ hours of simulation. Published at ISHMT.</p>
+      <div class="section">
+        <h2>Research</h2>
+        <p class="small">Primary Author — CFD simulation of convective heat transfer in micro-channels. Demonstrated 11% higher efficiency with channel wall. 400+ hours of simulation. Published at ISHMT.</p>
+      </div>
 
-      <footer>Use Print → Save as PDF for a clean copy. © Nishant Hinge</footer>
+      <footer>✨ Designed Resume Website — Nishant Hinge | Use Print → Save as PDF</footer>
     </section>
   </main>
 </body>
