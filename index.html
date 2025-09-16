@@ -3,297 +3,146 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Interactive CV — Edit & Export</title>
+  <title>Nishant Hinge — Resume</title>
   <style>
-    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#06b6d4;--glass:rgba(255,255,255,0.03)}
+    :root{--bg:#0b1220;--card:#071428;--muted:#93a4b4;--accent:#06b6d4;--glass:rgba(255,255,255,0.04);--paper:#fbfbfd}
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#e6eef6;background:linear-gradient(180deg,#071024 0%, #071a2a 100%);}
-    .container{max-width:1000px;margin:28px auto;padding:20px;display:grid;grid-template-columns:320px 1fr;gap:20px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:18px;box-shadow:0 6px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
-    .left .profile-pic{width:100%;height:220px;border-radius:8px;background:linear-gradient(135deg,#073047,#0ea5a1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.85);font-weight:700}
-    h1,h2,h3{margin:6px 0}
-    h1{font-size:20px}
-    .muted{color:var(--muted);font-size:13px}
-    .contact{display:flex;flex-direction:column;gap:6px;margin-top:12px}
-    .pill{display:inline-flex;align-items:center;gap:8px;background:var(--glass);padding:8px;border-radius:999px;font-size:13px}
-    .skills{display:flex;flex-direction:column;gap:10px;margin-top:10px}
-    .skill{display:flex;flex-direction:column}
-    .bar{height:10px;border-radius:999px;background:rgba(255,255,255,0.06);overflow:hidden}
-    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#7dd3fc);border-radius:999px}
-    .section{margin-bottom:14px}
-    .section h3{font-size:14px}
-    .timeline{display:flex;flex-direction:column;gap:8px}
-    .item{padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:flex-start}
-    .item .meta{font-size:12px;color:var(--muted)}
-    .controls{display:flex;gap:8px;margin-bottom:12px}
-    button{background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit;padding:8px 10px;border-radius:8px;cursor:pointer}
-    .toolbar{display:flex;gap:10px;align-items:center;justify-content:flex-end;margin-bottom:12px}
-    .editable{outline:2px dashed transparent;padding:2px}
-    .editable:focus{outline:2px dashed rgba(6,182,212,0.5);}
-    .right .header{display:flex;justify-content:space-between;align-items:center}
-    .right .summary{margin-top:6px;color:var(--muted)}
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
-    .project{padding:12px;border-radius:8px;background:rgba(255,255,255,0.01)}
-    .small{font-size:13px}
-    .top-actions{display:flex;gap:8px}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),#7dd3fc);color:#021022;border:0}
-    .btn-ghost{background:transparent;border:1px dashed rgba(255,255,255,0.04)}
-    .import-area{display:flex;gap:8px;align-items:center}
-    footer{margin-top:14px;color:var(--muted);font-size:12px;text-align:center}
-    @media print{body{background:#fff;color:#000} .container{max-width:800px;grid-template-columns:1fr;box-shadow:none} .card{box-shadow:none;border:none} .controls,.toolbar,button{display:none}}
+    body{margin:0;font-family:Inter, sans-serif;background:linear-gradient(180deg,#041022 0%, #071428 100%);color:#e6eef6;}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:28px auto;padding:28px;display:grid;grid-template-columns:340px 1fr;gap:24px}
+    .card{background:rgba(255,255,255,0.02);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+    .avatar{height:160px;width:160px;border-radius:50%;background:linear-gradient(135deg,#06b6d4,#2563eb);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;margin-bottom:16px}
+    h1{margin:0;font-size:22px}
+    h2{margin:16px 0 8px;font-size:18px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:4px}
+    h3{margin:6px 0;font-size:16px}
+    .subtitle{color:var(--muted);font-size:14px;margin-top:4px}
+    .small{font-size:13px;color:var(--muted)}
+    .contact div{margin:4px 0}
+    ul{margin:6px 0 12px 20px;padding:0}
+    ul li{margin-bottom:6px;font-size:14px}
+    .timeline{display:flex;flex-direction:column;gap:16px}
+    .role{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px}
+    .role h3{font-size:15px}
+    .meta{font-size:13px;color:var(--muted);margin:4px 0}
+    .projects,.achievements,.extras{margin-top:10px}
+    .project,.achievement{margin-bottom:8px;font-size:14px}
+    footer{text-align:center;color:var(--muted);margin-top:20px;font-size:13px}
+    @media(max-width:920px){.wrap{grid-template-columns:1fr}}
+    @media print{body{background:#fff;color:#000}.card{background:#fff;color:#000;box-shadow:none;border:none}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card left">
-      <div class="profile-pic" contenteditable="true" id="nameCard">Your Name
-      </div>
-      <div style="margin-top:12px">
-        <h1 contenteditable="true" id="fullName">Nishant Hinge</h1>
-        <div class="muted small" contenteditable="true" id="headline">MBA | Operations & Strategy | Sustainability</div>
-        <div class="contact">
-          <div class="pill small" contenteditable="true" id="location">Bengaluru, India</div>
-          <div class="pill small" contenteditable="true" id="email">nishant@example.com</div>
-          <div class="pill small" contenteditable="true" id="phone">+91 9XXXXXXXXX</div>
-          <div class="pill small" contenteditable="true" id="links">LinkedIn: /in/yourname • GitHub: @handle</div>
-        </div>
-      </div>
+  <main class="wrap">
+    <!-- Left Column -->
+    <aside class="card">
+      <div class="avatar">NH</div>
+      <h1>Nishant Hinge</h1>
+      <div class="subtitle">MBA Candidate | Operations, Strategy & Consulting</div>
 
-      <div class="section">
-        <h3>Skills</h3>
-        <div class="skills" id="skillsWrap">
-          <!-- skill rows inserted here -->
-        </div>
-        <div style="margin-top:8px;display:flex;gap:8px">
-          <input id="skillTxt" placeholder="Skill name" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-          <input id="skillVal" type="number" min="0" max="100" value="80" style="width:72px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-          <button id="addSkill">Add</button>
-        </div>
+      <div class="contact">
+        <div><strong>Email:</strong> nishant@example.com</div>
+        <div><strong>Phone:</strong> +91-9XXXXXXXXX</div>
+        <div><strong>LinkedIn:</strong> linkedin.com/in/nishant-hinge</div>
+        <div><strong>Location:</strong> Mumbai, India</div>
       </div>
 
-      <div class="section">
-        <h3>Languages</h3>
-        <div contenteditable="true" class="muted small" id="languages">English (Fluent), Hindi (Native)</div>
+      <h2>Education</h2>
+      <div class="small">
+        <strong>MBA</strong>, BITS School of Management (BITSoM), Mumbai — 2026 (Dean’s List, GPA 3.7/4.0)<br>
+        <strong>B.E. (Hons.) Chemical Eng., Minor Finance</strong>, BITS Pilani Goa — 2022 (9.01/10, Rank 7/78)<br>
+        <strong>ISC (XII)</strong>, Singhania School — 2018 (89.6%)<br>
+        <strong>CBSE (X)</strong>, Lokpuram Public School — 2016 (97.0%, Rank 2/250)
       </div>
 
-      <div class="section">
-        <h3>Download / Export</h3>
-        <div class="controls">
-          <button id="printBtn" class="btn-primary">Print / PDF</button>
-          <button id="exportJson">Export JSON</button>
-          <button id="downloadHtml">Download .html</button>
-        </div>
-        <div class="import-area">
-          <input type="file" id="importFile" accept="application/json"> <small class="muted">(Import JSON to load)</small>
-        </div>
-      </div>
-    </div>
-
-    <div class="card right">
-      <div class="header">
-        <div>
-          <div class="muted">Resume</div>
-          <div class="muted small">Last edited: <span id="lastEdited"></span></div>
-        </div>
-        <div class="top-actions">
-          <button id="toggleEditable">Toggle Edit</button>
-          <button id="themeToggle">Theme</button>
-        </div>
+      <h2>Skills</h2>
+      <div class="small">
+        Process Optimization, Lean Six Sigma, Financial Modeling, Sustainability Strategy, Excel, SQL, Tableau, Minitab, Python (pandas)
       </div>
 
-      <div class="section">
-        <h2 contenteditable="true" id="summaryTitle">Professional Summary</h2>
-        <div class="summary editable" contenteditable="true" id="summary">Result-oriented operations engineer turned MBA with experience in process intensification, sustainability and finance. Skilled at problem solving, stakeholder management and cross-functional leadership.</div>
+      <h2>Certifications</h2>
+      <div class="small">Certified Six Sigma Green Belt — Henry Harvin</div>
+
+      <h2>Positions</h2>
+      <div class="small">
+        Core Member — Penny-Wise Finance Club (2024)<br>
+        Core Member — Raise a Toast Club (Public Speaking, 2024)<br>
+        Teaching Assistant — BITS Goa (2021)
       </div>
 
-      <div class="section">
-        <h3>Experience</h3>
-        <div class="timeline" id="expList">
-          <!-- experience items -->
+      <h2>Extracurriculars</h2>
+      <div class="small">
+        • Silver Medal — High Jump (State, National-level rep)<br>
+        • Silver Medal — 4x400m Relay (State)<br>
+        • Volunteering — Powai Lake cleanup (200+ kg plastic waste removed)<br>
+        • Mentored 5 underprivileged students, avg. score ↑11%
+      </div>
+    </aside>
+
+    <!-- Right Column -->
+    <section class="card">
+      <h2>Professional Summary</h2>
+      <p class="small">Operations Engineer turned MBA Candidate with 21 months of work experience at Deccan Fine Chemicals and 8 months of internships in consulting, banking and FMCG. Skilled in process optimization, project management, sustainability, and financial analysis. Recognized through multiple awards, publications, and case competition wins. Seeking consulting/operations roles to drive business impact through analytical problem-solving.</p>
+
+      <h2>Work Experience</h2>
+      <div class="timeline">
+        <div class="role">
+          <h3>Plant Operations Engineer — Deccan Fine Chemicals</h3>
+          <div class="meta">Goa, India | Jul 2022 – Mar 2024</div>
+          <ul>
+            <li>Awarded twice as “Employee of the Month” out of 1000+ employees.</li>
+            <li>Restored plant capacity to 100% within six months post-failure via RCA & 5-Why framework.</li>
+            <li>Delivered ₹50L p.a savings (24%) through circular economy project as lead engineer.</li>
+            <li>Reduced expenditure from ₹2.35Cr to ₹1.65Cr by retrofitting second-hand equipment.</li>
+            <li>Implemented 26 modifications → +8.5% yield, -5% energy use, +400MT throughput.</li>
+            <li>Drafted SOPs & trained 10+ operators → 100% ISO-9001 audit compliance.</li>
+            <li>Created sustainability training module, trained 1000+ employees, attended 4 ESG conferences.</li>
+          </ul>
         </div>
-        <div style="display:flex;gap:8px;margin-top:8px">
-          <input id="expRole" placeholder="Role @ Company (Dates)" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-          <button id="addExp">Add</button>
+
+        <div class="role">
+          <h3>Category Management Intern — Flipkart Pvt. Ltd.</h3>
+          <div class="meta">Bangalore | Apr 2025 – Jun 2025</div>
+          <ul>
+            <li>Secured PPO for analytical insights & recommendations.</li>
+            <li>Benchmarked 25+ international platforms, identified 140+ high-potential MSKUs.</li>
+            <li>Recommended 30+ strategies to boost GMV, CTR and traffic via assortment & pricing optimization.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <h3>Investment Banking Analyst Intern — JP Morgan Chase</h3>
+          <div class="meta">Mumbai | Jan 2022 – Jun 2022</div>
+          <ul>
+            <li>Received PPO for consistent performance.</li>
+            <li>Assisted in Europe’s largest automotive IPO (~€9.4B).</li>
+            <li>Built DCFs, WACC, football field analyses for M&A pitches across industries.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <h3>Research Intern — Bharat Petroleum Corporation Limited</h3>
+          <div class="meta">Mumbai | May 2020 – Jun 2020</div>
+          <ul>
+            <li>Validated equipment design with MATLAB model; identified 20% heat transfer efficiency drop.</li>
+          </ul>
         </div>
       </div>
 
-      <div class="section">
-        <h3>Projects & Education</h3>
-        <div class="projects" id="projectsWrap">
-          <!-- projects -->
-        </div>
-        <div style="display:flex;gap:8px;margin-top:8px">
-          <input id="projTitle" placeholder="Project or Degree (short)" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-          <button id="addProj">Add</button>
-        </div>
+      <h2>Achievements</h2>
+      <div class="achievements small">
+        • Top 10 globally — Global Harvard Case Competition (2025)<br>
+        • Top 50 nationally — EY Techathon, AI for rural women (2025)<br>
+        • PPI — Flipkart WIRED case competition (2024)<br>
+        • Research paper published at ISHMT, IIT Patna (2023)<br>
+        • Scholarship for productivity improvement — BPCL (2020)<br>
+        • All-rounder Student Award (Lioness Club, 2016)
       </div>
 
-      <footer>Tip: Double-click any text to edit. Use the export buttons to save a copy.</footer>
-    </div>
-  </div>
+      <h2>Research</h2>
+      <p class="small">Primary Author — CFD simulation of convective heat transfer in micro-channels. Demonstrated 11% higher efficiency with channel wall. 400+ hours of simulation. Published at ISHMT.</p>
 
-  <script>
-    // Helpers
-    const now = () => new Date().toLocaleString();
-    document.getElementById('lastEdited').innerText = now();
-
-    // Initial sample data
-    const data = {
-      name: 'Nishant Hinge',
-      headline: 'MBA | Operations & Strategy | Sustainability',
-      location: 'Bengaluru, India',
-      email: 'nishant@example.com',
-      phone: '+91 9XXXXXXXXX',
-      links: 'LinkedIn: /in/yourname • GitHub: @handle',
-      summary: 'Result-oriented operations engineer turned MBA with experience in process intensification, sustainability and finance. Skilled at problem solving, stakeholder management and cross-functional leadership.',
-      skills: [{n:'Process Optimization',v:90},{n:'Financial Modeling',v:75},{n:'Six Sigma',v:80}],
-      exp: ['Lead Project Engineer @ Deccan Fine Chemicals (2019 - 2023) — Delivered ₹50L p.a cost savings through process intensification.','Investment Banking Analyst @ JP Morgan (2017 - 2019) — Supported M&A analyses and valuations.'],
-      projects: ['Market Research — Economical Housing, Bengaluru','Six Sigma Green Belt — Completed training (2025)']
-    }
-
-    // Render functions
-    function renderSkills(){
-      const wrap = document.getElementById('skillsWrap');wrap.innerHTML='';
-      data.skills.forEach((s,idx)=>{
-        const div = document.createElement('div');div.className='skill';
-        div.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><strong contenteditable="true" data-path="skills.${idx}.n">${s.n}</strong><div><button data-act="up" data-idx="${idx}">↑</button><button data-act="down" data-idx="${idx}">↓</button><button data-act="del" data-idx="${idx}">✕</button></div></div><div class="bar"><i style="width:${s.v}%"></i></div>`;
-        wrap.appendChild(div);
-      })
-    }
-
-    function renderExp(){
-      const wrap = document.getElementById('expList');wrap.innerHTML='';
-      data.exp.forEach((e,idx)=>{
-        const div = document.createElement('div');div.className='item';
-        div.innerHTML = `<div><div contenteditable="true" data-path="exp.${idx}">${e}</div><div class="meta small">Click to edit • Use arrows to reorder</div></div><div style="display:flex;flex-direction:column;gap:6px"><button data-act="up" data-idx="${idx}">↑</button><button data-act="down" data-idx="${idx}">↓</button><button data-act="del" data-idx="${idx}">✕</button></div>`;
-        wrap.appendChild(div);
-      })
-    }
-
-    function renderProjects(){
-      const wrap = document.getElementById('projectsWrap');wrap.innerHTML='';
-      data.projects.forEach((p,idx)=>{
-        const div = document.createElement('div');div.className='project';
-        div.innerHTML = `<div contenteditable="true" data-path="projects.${idx}"><strong>${p}</strong></div><div style="margin-top:8px;display:flex;gap:6px"><button data-act="up" data-idx="${idx}">↑</button><button data-act="down" data-idx="${idx}">↓</button><button data-act="del" data-idx="${idx}">✕</button></div>`;
-        wrap.appendChild(div);
-      })
-    }
-
-    function connectFields(){
-      // basic fields
-      ['fullName','headline','location','email','phone','links','summary'].forEach(id=>{
-        const el = document.getElementById(id);
-        el.addEventListener('input',()=>{data[id=== 'fullName' ? 'name' : id] = el.innerText; document.getElementById('lastEdited').innerText = now();});
-      })
-      // delegate edits in lists
-      document.body.addEventListener('input', e=>{
-        const path = e.target.getAttribute('data-path');
-        if(!path) return;
-        const parts = path.split('.');
-        if(parts.length===2){
-          const [arr, idx] = parts; data[arr][idx] = e.target.innerText; document.getElementById('lastEdited').innerText = now(); renderSkills(); renderExp(); renderProjects();
-        }
-        if(parts.length===3){ // skills.n
-          const [arr, idx, key] = parts; data[arr][idx][key] = e.target.innerText; document.getElementById('lastEdited').innerText = now(); renderSkills();
-        }
-      })
-    }
-
-    // initial render
-    function init(){
-      // populate top fields
-      document.getElementById('fullName').innerText = data.name;
-      document.getElementById('headline').innerText = data.headline;
-      document.getElementById('location').innerText = data.location;
-      document.getElementById('email').innerText = data.email;
-      document.getElementById('phone').innerText = data.phone;
-      document.getElementById('links').innerText = data.links;
-      document.getElementById('summary').innerText = data.summary;
-      renderSkills();renderExp();renderProjects();connectFields();
-    }
-    init();
-
-    // Add skill
-    document.getElementById('addSkill').addEventListener('click',()=>{
-      const n = document.getElementById('skillTxt').value.trim();
-      const v = Number(document.getElementById('skillVal').value)||50;
-      if(!n) return alert('Enter skill name');
-      data.skills.push({n,v}); renderSkills(); document.getElementById('skillTxt').value=''; document.getElementById('skillVal').value=80; document.getElementById('lastEdited').innerText = now();
-    })
-
-    // Add experience
-    document.getElementById('addExp').addEventListener('click',()=>{
-      const t = document.getElementById('expRole').value.trim(); if(!t) return; data.exp.push(t); document.getElementById('expRole').value=''; renderExp(); document.getElementById('lastEdited').innerText = now();
-    })
-
-    // Add project
-    document.getElementById('addProj').addEventListener('click',()=>{
-      const t = document.getElementById('projTitle').value.trim(); if(!t) return; data.projects.push(t); document.getElementById('projTitle').value=''; renderProjects(); document.getElementById('lastEdited').innerText = now();
-    })
-
-    // Delegated button actions (up, down, del)
-    document.body.addEventListener('click', e=>{
-      const act = e.target.getAttribute('data-act');
-      const idx = e.target.getAttribute('data-idx'); if(!act) return;
-      // find which list
-      let parent = e.target.closest('.skill') || e.target.closest('.item') || e.target.closest('.project');
-      // determine which list by searching ancestors
-      const lists = [['skills', data.skills], ['exp', data.exp], ['projects', data.projects]];
-      lists.forEach(([k,arr])=>{
-        const container = document.getElementById(k==='skills' ? 'skillsWrap' : (k==='exp' ? 'expList' : 'projectsWrap'));
-        if(container && container.contains(e.target)){
-          const i = Number(idx);
-          if(act==='del'){ arr.splice(i,1); }
-          else if(act==='up' && i>0){ arr.splice(i-1,0,arr.splice(i,1)[0]); }
-          else if(act==='down' && i < arr.length-1){ arr.splice(i+1,0,arr.splice(i,1)[0]); }
-        }
-      })
-      renderSkills();renderExp();renderProjects();document.getElementById('lastEdited').innerText = now();
-    })
-
-    // Export JSON
-    document.getElementById('exportJson').addEventListener('click',()=>{
-      const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-      const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'cv-data.json'; a.click(); URL.revokeObjectURL(url);
-    })
-
-    // Import JSON
-    document.getElementById('importFile').addEventListener('change', async (e)=>{
-      const f = e.target.files[0]; if(!f) return; try{ const txt = await f.text(); const obj = JSON.parse(txt); Object.assign(data,obj); init(); alert('Imported successfully'); }catch(err){alert('Invalid file')}
-    })
-
-    // Download HTML (self-contained)
-    document.getElementById('downloadHtml').addEventListener('click',()=>{
-      const doctype = '<!doctype html>';
-      const html = document.documentElement.outerHTML;
-      const blob = new Blob([doctype+'\n'+html],{type:'text/html'});
-      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download='interactive-cv.html'; a.click();
-    })
-
-    // Print
-    document.getElementById('printBtn').addEventListener('click',()=>{
-      window.print();
-    })
-
-    // Theme toggle (simple inversion)
-    let dark = true;
-    document.getElementById('themeToggle').addEventListener('click',()=>{
-      dark = !dark;
-      if(!dark){ document.documentElement.style.setProperty('--bg','#fff'); document.body.style.background = '#fff'; document.documentElement.style.setProperty('--muted','#385056'); document.documentElement.style.setProperty('--accent','#075985'); }
-      else{ document.documentElement.style.setProperty('--bg','#0f1724'); document.body.style.background = 'linear-gradient(180deg,#071024 0%, #071a2a 100%)'; document.documentElement.style.setProperty('--muted','#9aa4b2'); document.documentElement.style.setProperty('--accent','#06b6d4'); }
-    })
-
-    // Toggle global editability
-    let editable = true;
-    document.getElementById('toggleEditable').addEventListener('click',()=>{
-      editable = !editable;
-      document.querySelectorAll('[contenteditable]').forEach(el=> el.contentEditable = editable);
-      document.getElementById('toggleEditable').innerText = editable ? 'Toggle Edit' : 'Enable Edit';
-    })
-
-    // Update lastEdited periodically
-    setInterval(()=>{document.getElementById('lastEdited').innerText = now();}, 60*1000);
-
-  </script>
+      <footer>Use Print → Save as PDF for a clean copy. © Nishant Hinge</footer>
+    </section>
+  </main>
 </body>
 </html>
